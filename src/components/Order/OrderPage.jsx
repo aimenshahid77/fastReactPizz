@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { fetchAddress } from "../../services/Geolocation.js";
 import { createOrder } from "../../services/Api.js";
 
+
 import { useMutation } from "@tanstack/react-query";
 
 const OrderPage = () => {
@@ -30,13 +31,13 @@ const OrderPage = () => {
     setPriority(e.target.checked);
   };
 
- const { mutate: createOrderApi, isPending } = useMutation({
-  mutationFn: createOrder,
-  onSuccess: (data) => {
-    const orderId = data.data.id;
+  const { mutate: createOrderApi, isPending } = useMutation({
+    mutationFn: createOrder,
+    onSuccess: (data) => {
+      const orderId = data.data.id;
       navigate(`/order/${orderId}`);
-  },
-});
+    },
+  });
 
   const handleFetchAddress = ({ position, address }) => {
     setAddress(address);
@@ -46,7 +47,10 @@ const OrderPage = () => {
   const { mutate: fetchAddressApi, isPending: isFetchingAddress } = useMutation(
     {
       mutationFn: fetchAddress,
-      onSuccess: (data) => handleFetchAddress(data),
+      onSuccess: (data) => {
+        setAddress(data.address);
+        setPosition(`${data.position.latitude},${data.position.longitude}`);
+      },
       onError: (error) => console.error("Error fetching address:", error),
     },
   );
@@ -54,12 +58,21 @@ const OrderPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    if (!name || !phone || !address) {
+      alert("Please fill all required fields!");
+      return;
+    }
+
+    if (!cart || cart.length === 0) {
+      alert("Your cart is empty!");
+      return;
+    }
+
     const formattedCart = cart.map((item) => ({
       pizzaId: item.pizzaId,
       name: item.name,
       quantity: item.quantity,
       unitPrice: item.unitPrice,
-      totalPrice: item.quantity * item.unitPrice,
     }));
 
     const orderData = {
@@ -69,9 +82,12 @@ const OrderPage = () => {
       priority,
       cart: formattedCart,
     };
+     console.log("ORDER PAYLOAD:", orderData);
+     createOrderApi(orderData);
+  }
 
-    createOrderApi(orderData);
-  };
+ 
+ 
   return (
     <div>
       <h2 className="text-3xl font-bold text-center font-poppins">
@@ -142,7 +158,7 @@ const OrderPage = () => {
               className="h-4 w-4 text-yellow-500 focus:ring-yellow-500 border-gray-300 rounded"
             />
             <span className="text-sm font-medium text-gray-700">
-              Priority (extra $2)
+              Priority (extra 0.2%)
             </span>
           </label>
         </div>
