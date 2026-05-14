@@ -6,7 +6,7 @@ A fast, modern pizza ordering web application built with React. Browse the menu,
 
 ---
 
-## ✨ Features
+##  Features
 
 - 🛒 **Dynamic Menu** — Fetches real-time pizza data from an external API
 - 👤 **No Sign-up Required** — Just enter your name and start ordering
@@ -18,7 +18,7 @@ A fast, modern pizza ordering web application built with React. Browse the menu,
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Category | Technology |
 |---|---|
@@ -35,7 +35,7 @@ A fast, modern pizza ordering web application built with React. Browse the menu,
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Prerequisites
 
@@ -74,3 +74,103 @@ A fast, modern pizza ordering web application built with React. Browse the menu,
 ---
 
 ## 📁 Project Structure
+fast-react-pizza/
+├── src/
+│   ├── components/
+│   │   ├── Cart/
+│   │   │   ├── Cart.jsx
+│   │   │   └── CartOverview.jsx
+│   │   ├── Home/
+│   │   │   └── Home.jsx
+│   │   ├── Menu/
+│   │   │   ├── Menu.jsx
+│   │   │   └── MenuItem.jsx
+│   │   ├── Order/
+│   │   │   ├── OrderConfirmation.jsx
+│   │   │   └── OrderPage.jsx
+│   │   └── SharedUi/
+│   │       └── Buttons/
+│   │           ├── Buttons.jsx
+│   │           └── CartButtons.jsx
+│   ├── helpers/           # Utility/helper functions
+│   ├── layout/            # App layout (header, footer, etc.)
+│   ├── redux/
+│   │   ├── slices/
+│   │   │   ├── cartSlice.js
+│   │   │   └── userSlice.js
+│   │   └── store.js
+│   ├── services/
+│   │   ├── Api.js         # Menu & order API calls
+│   │   └── Geolocation.js # GPS / address fetching
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
+├── .gitignore
+├── README.md
+├── eslint.config.js
+├── index.html
+├── package.json
+├── package-lock.json
+└── vite.config.js
+
+---
+
+##  Architecture & Key Decisions
+
+### State Management
+- **Redux Toolkit** handles global client state: the cart contents and the current user's name.
+- **React Query** manages all server state: fetching the menu, creating orders, and re-fetching on demand — with built-in caching and loading states.
+
+### Data Fetching
+- Menu data and order details are loaded via **React Router loaders**, enabling data to be fetched before the component renders.
+- Order creation and updates use **React Router actions**, keeping mutation logic co-located with the route.
+
+### Validation
+- **Zod** is used to validate order form data (phone number format, required fields) before submission, providing clear user-facing error messages.
+
+### Styling
+- **Tailwind CSS** utility classes are used throughout for a consistent, mobile-first design with zero custom CSS files.
+
+---
+
+##  Available Scripts
+
+| Script | Description |
+|---|---|
+| `npm run dev` | Start local dev server |
+| `npm run build` | Build for production |
+| `npm run preview` | Preview the production build locally |
+| `npm run lint` | Run ESLint |
+
+---
+
+##  API
+
+This app uses the [Jonas Schmedtmann](https://github.com/jonasschmedtmann) Pizza API for menu and order data:
+
+- `GET /menu` — Fetch all available pizzas
+- `GET /order/:id` — Get order by ID
+- `POST /order` — Create a new order
+- `PATCH /order/:id` — Update order (e.g., mark as priority)
+
+---
+
+##  Contributing
+
+Contributions are welcome! Feel free to open an issue or submit a pull request.
+
+1. Fork the project
+2. Create your feature branch: `git checkout -b feature/amazing-feature`
+3. Commit your changes: `git commit -m 'Add amazing feature'`
+4. Push to the branch: `git push origin feature/amazing-feature`
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+---
+
+> Built with using React, Tailwind CSS, and Supabase.
