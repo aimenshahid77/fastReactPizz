@@ -173,4 +173,4 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-> Built with using React, Tailwind CSS, and Supabase.
+> Built with using React, Javascript, Tailwind CSS, and Supabase.
