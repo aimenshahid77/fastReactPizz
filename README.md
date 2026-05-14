@@ -1,16 +1,76 @@
-# React + Vite
+# 🍕 Fast React Pizza Co.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A fast, modern pizza ordering web application built with React. Browse the menu, customize your order, and get your pizza delivered — no account required.
 
-Currently, two official plugins are available:
+**🔗 Live Demo:** [fast-react-pizz-pink.vercel.app](https://fast-react-pizz-pink.vercel.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## ✨ Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- 🛒 **Dynamic Menu** — Fetches real-time pizza data from an external API
+- 👤 **No Sign-up Required** — Just enter your name and start ordering
+- 📦 **Cart Management** — Add, remove, and update quantities with ease
+- 📍 **GPS Location Support** — Auto-fill your delivery address using geolocation
+- ⚡ **Priority Orders** — Mark your order as priority for faster delivery
+- 🔍 **Order Tracking** — Look up any order using its unique order ID
+- 📱 **Fully Responsive** — Optimized for mobile and desktop
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Tech Stack
+
+| Category | Technology |
+|---|---|
+| Frontend Framework | [React](https://react.dev/) |
+| Styling | [Tailwind CSS](https://tailwindcss.com/) |
+| State Management | [Redux Toolkit](https://redux-toolkit.js.org/) |
+| Server State & Caching | [React Query (TanStack Query)](https://tanstack.com/query) |
+| Schema Validation | [Zod](https://zod.dev/) |
+| Backend & Database | [Supabase](https://supabase.com/) |
+| Routing | [React Router v6](https://reactrouter.com/) |
+| API Fetching | Native `fetch` API with custom loaders/actions |
+| Build Tool | [Vite](https://vitejs.dev/) |
+| Deployment | [Vercel](https://vercel.com/) |
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js `v18+`
+- npm or yarn
+- A [Supabase](https://supabase.com/) account and project
+
+### Installation
+
+1. **Clone the repository**
+```bash
+   git clone https://github.com/your-username/fast-react-pizza.git
+   cd fast-react-pizza
+```
+
+2. **Install dependencies**
+```bash
+   npm install
+```
+
+3. **Set up environment variables**
+
+   Create a `.env` file in the root directory:
+```env
+   VITE_SUPABASE_URL=your_supabase_project_url
+   VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
+
+4. **Start the development server**
+```bash
+   npm run dev
+```
+
+   The app will be available at `http://localhost:5173`
+
+---
+
+## 📁 Project Structure
