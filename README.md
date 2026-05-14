@@ -1,4 +1,4 @@
-# 🍕 Fast React Pizza Co.
+# 🍕 Fast React Pizza
 
 A fast, modern pizza ordering web application built with React. Browse the menu, customize your order, and get your pizza delivered — no account required.
 
